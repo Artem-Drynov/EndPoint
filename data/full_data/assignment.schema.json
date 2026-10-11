@@ -1,0 +1,376 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Hexlet assignment record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "track",
+    "company",
+    "company_url",
+    "language",
+    "seniority",
+    "difficulty",
+    "estimated_hours",
+    "technologies",
+    "statement",
+    "structure",
+    "attachments",
+    "external_links",
+    "quality",
+    "generation",
+    "source",
+    "content_sha256",
+    "duplicate_group",
+    "tables",
+    "removed_parts"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^hexlet_[a-f0-9]{20}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "track": {
+      "enum": [
+        "analytics",
+        "python",
+        "frontend",
+        "java",
+        "go",
+        "php",
+        "fullstack"
+      ]
+    },
+    "company": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "company_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "language": {
+      "enum": [
+        "ru",
+        "en",
+        null
+      ]
+    },
+    "seniority": {
+      "enum": [
+        "intern",
+        "junior",
+        "middle",
+        "senior",
+        null
+      ]
+    },
+    "difficulty": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "estimated_hours": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "technologies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "evidence",
+          "method"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "method": {
+            "const": "keyword_match"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "statement": {
+      "type": "object",
+      "required": [
+        "text",
+        "format",
+        "extraction_method",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "format": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "extraction_method": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "text_extracted",
+            "partial",
+            "unavailable"
+          ]
+        }
+      }
+    },
+    "structure": {
+      "type": "object",
+      "required": [
+        "headings",
+        "list_items",
+        "method",
+        "requirements",
+        "optional_requirements",
+        "evaluation_criteria"
+      ],
+      "properties": {
+        "headings": {
+          "type": "array"
+        },
+        "list_items": {
+          "type": "array"
+        },
+        "method": {
+          "type": "string"
+        },
+        "requirements": {
+          "type": "array"
+        },
+        "optional_requirements": {
+          "type": "array"
+        },
+        "evaluation_criteria": {
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "external_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "label",
+          "url",
+          "fetched"
+        ],
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "fetched": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "quality": {
+      "type": "object",
+      "required": [
+        "issues",
+        "human_verified",
+        "possible_solution"
+      ],
+      "properties": {
+        "issues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "human_verified": {
+          "type": "boolean"
+        },
+        "possible_solution": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "generation": {
+      "type": "object",
+      "required": [
+        "eligible",
+        "requires_asset_review",
+        "unknown_fields",
+        "pattern_labels",
+        "readiness",
+        "usage"
+      ],
+      "properties": {
+        "eligible": {
+          "type": "boolean"
+        },
+        "requires_asset_review": {
+          "type": "boolean"
+        },
+        "unknown_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pattern_labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "readiness": {
+          "enum": [
+            "ready",
+            "partial"
+          ]
+        },
+        "usage": {
+          "enum": [
+            "full_extracted_statement",
+            "extracted_parts_only"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "repository",
+        "commit",
+        "path",
+        "url",
+        "catalog_section",
+        "catalog_line",
+        "catalog_entry",
+        "discovery",
+        "retrieved_at",
+        "repository_license_file",
+        "assignment_license"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": "string"
+        },
+        "catalog_section": {
+          "type": "string"
+        },
+        "catalog_line": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "catalog_entry": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "discovery": {
+          "enum": [
+            "root_readme",
+            "filesystem_recovery"
+          ]
+        },
+        "retrieved_at": {
+          "type": "string"
+        },
+        "repository_license_file": {
+          "type": "string"
+        },
+        "assignment_license": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "content_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "duplicate_group": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tables": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^table_[a-f0-9]{20}$"
+      }
+    },
+    "removed_parts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "reason"
+        ],
+        "properties": {
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

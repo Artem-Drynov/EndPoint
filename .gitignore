@@ -21,6 +21,22 @@ data/*
 !data/full_data/
 data/full_data/*
 !data/full_data/.gitkeep
+!data/full_data/README.md
+!data/full_data/LICENSE
+!data/full_data/generation_prompt.md
+!data/full_data/assignment.schema.json
+!data/full_data/prepared/
+data/full_data/prepared/*
+!data/full_data/prepared/assignments.jsonl
+!data/full_data/prepared/rag_chunks.jsonl
+!data/full_data/prepared/manifest.json
+!data/full_data/prepared/REPORT.md
+!data/algorithms/
+data/algorithms/*
+!data/algorithms/multi-source/
+data/algorithms/multi-source/*
+!data/algorithms/multi-source/corpus.json
+!data/algorithms/multi-source/*-LICENSE.txt
 demo-accounts.md
 
 # Local deployment bundles

@@ -25,6 +25,10 @@ async def main() -> None:
                 print("corpus:", await ks.ingest_directory(db, root))
             else:
                 print(f"каталог корпуса не найден: {root} (пропущено; работает встроенный корпус)")
+            algorithms = Path('/data/algorithms/multi-source')
+            if (algorithms / 'corpus.json').is_file():
+                from app.services.algorithm_bulk_import import ingest
+                print('algorithms:', await ingest(db, algorithms, write_report=False))
         print("stats:", await ks.knowledge_stats(db))
     await engine.dispose()
 

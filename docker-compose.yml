@@ -76,6 +76,8 @@ services:
       UPLOAD_DIR: /app/uploads
       JUDGE0_URL: ${JUDGE0_URL:-http://host.docker.internal:2358}
       KNOWLEDGE_DIR: /knowledge
+      FRONTEND_URL: ${FRONTEND_URL:-http://195.209.220.175}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://195.209.220.175,http://127.0.0.1:3001}
       GIT_EVAL_URL: http://git-eval:9000
       GIT_EVAL_KEY: ${GITEVAL_API_KEY}
       GIT_EVAL_WEBHOOK_SECRET: ${GITEVAL_WEBHOOK_SECRET}

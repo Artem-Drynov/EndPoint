@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.1.0",
+  "repository": "https://github.com/Hexlet/ru-test-assignments",
+  "commit": "a681fd0f6ddedc429766aa8bdda579ca0c2d2260",
+  "built_at": "2026-10-08T07:41:55.652702+00:00",
+  "tracks": {
+    "analytics": {
+      "assignments": 83,
+      "indexed_entries": 67,
+      "with_text": 83,
+      "partial": 25,
+      "unavailable": 0,
+      "quarantined": 0
+    },
+    "python": {
+      "assignments": 25,
+      "indexed_entries": 25,
+      "with_text": 25,
+      "partial": 5,
+      "unavailable": 0,
+      "quarantined": 0
+    },
+    "frontend": {
+      "assignments": 74,
+      "indexed_entries": 101,
+      "with_text": 74,
+      "partial": 16,
+      "unavailable": 0,
+      "quarantined": 0
+    },
+    "java": {
+      "assignments": 20,
+      "indexed_entries": 21,
+      "with_text": 20,
+      "partial": 0,
+      "unavailable": 0,
+      "quarantined": 0
+    },
+    "go": {
+      "assignments": 8,
+      "indexed_entries": 8,
+      "with_text": 8,
+      "partial": 0,
+      "unavailable": 0,
+      "quarantined": 0
+    },
+    "php": {
+      "assignments": 16,
+      "indexed_entries": 18,
+      "with_text": 16,
+      "partial": 0,
+      "unavailable": 0,
+      "quarantined": 0
+    },
+    "fullstack": {
+      "assignments": 1,
+      "indexed_entries": 2,
+      "with_text": 1,
+      "partial": 1,
+      "unavailable": 0,
+      "quarantined": 0
+    }
+  },
+  "total_assignments": 227,
+  "total_chunks": 352,
+  "total_assets": 73,
+  "duplicate_groups": 2,
+  "excluded_records": 43,
+  "total_tables": 183,
+  "total_table_rows": 2331069,
+  "assignments_with_tables": 60,
+  "assignments_with_removed_parts": 23,
+  "chunking": {
+    "unit": "unicode_characters",
+    "max_chars": 3500,
+    "overlap_chars": 300,
+    "token_limit_guaranteed": false
+  },
+  "scope": "Only readable condition documents or independent readable parts; unusable records excluded; source tables and previews attached; unsupported parts omitted with audit; no notebook or macro execution."
+}

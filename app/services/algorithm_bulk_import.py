@@ -105,7 +105,7 @@ async def fetch(root):
         (root/'corpus.json').write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
         print(json.dumps({'downloaded':len(records),'sources':{'neetcode':100,'exercism':60,'thealgorithms':40}}))
 
-async def ingest(db,root):
+async def ingest(db,root,*,write_report=True):
     records=json.loads((root/'corpus.json').read_text(encoding='utf-8'))
     assert len(records)==200 and len({r['url'] for r in records})==200
     licenses={key:(root/(key+'-LICENSE.txt')).read_text(encoding='utf-8') for key in REPOS}
@@ -124,7 +124,8 @@ async def ingest(db,root):
         st=await upsert_document(db,source='algorithm-solutions',path=r['url']+'#python-solution',title='Решение: '+r['title'],text=solution,topics=['algorithm','solution',*r['topics']],**common);stats[st]+=1
     await db.commit()
     result={'import':stats,'tasks':200,'solutions':200,'knowledge':await knowledge_stats(db)}
-    (root/'import-report.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+    if write_report:
+        (root/'import-report.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
     return result
 
 async def main():
