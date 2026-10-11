@@ -8,7 +8,7 @@ React 19, Vite, Express, Monaco Editor, Lucide SVG. Интерфейс соис�
 ```bash
 # Сначала запустить backend по инструкции корневого README
 cd frontend
-cp .env.example .env
+ # Используйте настроенный ../.env из корня проекта
 npm ci
 npm run build
 npm start
@@ -46,3 +46,8 @@ npm run build. Ручная проверка: вход обеими ролями
 
 См. ../docs/DEPLOYMENT.md. Backend и frontend запускаются отдельно; nginx/Caddy должен
 проксировать Express и WebSocket. Закройте служебные порты и включите HTTPS.
+
+## Единый env
+
+`npm start` и `npm run dev` читают `../.env`. Отдельный frontend/.env не нужен.
+Корневой .env содержит секреты backend и не должен публиковаться или попадать в VITE_* переменные.
