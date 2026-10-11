@@ -22,3 +22,9 @@ data/*
 data/full_data/*
 !data/full_data/.gitkeep
 demo-accounts.md
+
+# Local deployment bundles
+endpoint-frontend.tar
+endpoint-frontend-docker.zip
+output/
+tmp/

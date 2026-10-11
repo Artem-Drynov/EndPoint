@@ -14,8 +14,12 @@
 
 ## Быстрый старт (Docker)
 
-Эта ветка объединяет исходный FSP backend и интеграции EndPoint. Фронтенд находится в ветке
-[`endpoint-frontend`](https://github.com/Artem-Drynov/EndPoint/tree/endpoint-frontend), каталог `frontend/`.
+Ветка main содержит backend, frontend и общую Docker Compose конфигурацию.
+Фронтенд расположен в каталоге `frontend/`. Единый `.env` находится в корне рядом с `compose.yml`.
+Существующий серверный `.env` нужно сохранить. Секреты не входят в Git.
+Запуск всего стека из корня: `docker compose -f compose.yml up -d --build`.
+Node.js на сервере не нужен. Nginx проксирует `http://127.0.0.1:3001`.
+Judge0 подключается отдельно через JUDGE0_URL, основной Compose не устанавливает его.
 Исходная документация API ниже сохранена; изменения описаны в [документации EndPoint](docs/ENDPOINT.md).
 
 ```bash

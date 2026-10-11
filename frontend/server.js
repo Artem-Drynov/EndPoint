@@ -77,6 +77,7 @@ server.on("upgrade", (request, socket, head) => {
   socket.on("error", () => {});
   websocketProxy.ws(request, socket, head);
 });
-server.listen(process.env.PORT || 3001, "127.0.0.1", () =>
-  console.log("EndPoint: http://127.0.0.1:" + (process.env.PORT || 3001)),
+const host = process.env.HOST || "127.0.0.1";
+server.listen(process.env.PORT || 3001, host, () =>
+  console.log("EndPoint: http://" + host + ":" + (process.env.PORT || 3001)),
 );

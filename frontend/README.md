@@ -1,5 +1,17 @@
 # EndPoint — Frontend
 
+## Запуск в Docker
+
+Из корня репозитория: `docker compose -f compose.yml up -d --build frontend`.
+Compose запускает зависимости, frontend проксирует API и WebSocket на `http://api:8000`.
+Порт хоста: `127.0.0.1:3001`, для внешнего доступа используйте nginx.
+Единый `.env` остаётся в корне, секреты backend в контейнер frontend не передаются.
+В образ входят собранный `dist`, Express и production-зависимости. Node.js на хосте не нужен.
+
+Если backend уже запущен этим Compose, обновить только фронт:
+`docker compose -f compose.yml up -d --build --no-deps frontend`.
+Предварительно остановите прежний процесс фронта, если он занимает порт 3001.
+
 React 19, Vite, Express, Monaco Editor, Lucide SVG. Интерфейс соискателя и работодателя
 использует FastAPI из корня этой ветки. Исходный backend также доступен в main.
 

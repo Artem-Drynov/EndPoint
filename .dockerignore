@@ -12,3 +12,8 @@ data/
 reqcore/
 ats-service/
 frontend/
+
+endpoint-frontend.tar
+endpoint-frontend-docker.zip
+output/
+tmp/
