@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+.git/
+node_modules/
+*.log
+.local-uploads/
+uploads/
+data/
+reqcore/
+ats-service/
+frontend/
