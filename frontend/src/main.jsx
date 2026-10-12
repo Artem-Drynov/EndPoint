@@ -229,6 +229,13 @@ function App({ workspace, authUser, onLogout, reloadWorkspace }) {
   );
   const [theme, setTheme] = useSaved("endpoint-theme", "light");
   const employer = authUser.role === "employer";
+  const hasPublishedVacancy = (workspace.vacancies || []).some(item => item.published);
+  useEffect(() => {
+    if (employer && !hasPublishedVacancy &&
+        ['/employer/dashboard', '/employer/needs'].includes(route)) {
+      navigate('/employer/start');
+    }
+  }, [employer, hasPublishedVacancy, route]);
   const [profile, setProfile] = useRemoteState(
     workspace.profile,
     employer ? null : "/api/me/profile",
@@ -434,7 +441,9 @@ function App({ workspace, authUser, onLogout, reloadWorkspace }) {
   else if (route === '/admin/knowledge') page = <Suspense fallback={<p>Загрузка…</p>}><KnowledgeAdmin /></Suspense>;
   else if (route === '/candidate/practice') page = <Suspense fallback={<div className="card">Загрузка…</div>}><Practice theme={theme} /></Suspense>;
   else if (/\/(services|vacancies|applications|tasks|settings|development|notifications)$/.test(route)) page = <Suspense fallback={<div className="card">Загрузка…</div>}><WorkPage key={route} section={route.split('/').pop()} theme={theme} authUser={authUser} notify={notify} reloadWorkspace={reloadWorkspace} workspace={workspace} startCompanyTask={async offer=>{await flushWrites();const progress=await api('/api/offers/'+offer.id+'/assignment/start',{method:'POST'});setAssignment(progress,{persist:false});navigate('/candidate/assignment');}} /></Suspense>;
-  else if ((route === "/employer/dashboard" || route === "/employer/needs")) page = <Dashboard {...context} />;
+  else if ((route === "/employer/dashboard" || route === "/employer/needs")) page = employer && !hasPublishedVacancy
+    ? <Onboarding {...context} route="/employer/start" />
+    : <Dashboard {...context} />;
   else if (route === "/employer/hackathons" && employer) page = <Hackathons />;
   else if (route === "/employer/builder") page = <Builder {...context} />;
   else if (route.includes("/chat/")) page = <Chat route={route} {...context} />;
